@@ -1,4 +1,5 @@
-FROM nvidia/cuda:10.2-devel-ubuntu18.04
+# FROM nvidia/cuda:10.2-devel-ubuntu18.04
+FROM nvidia/cuda:11.8.0-devel-ubuntu20.04
 
 ENV COLMAP_VERSION=3.7
 ENV CMAKE_VERSION=3.21.0
@@ -57,7 +58,7 @@ RUN echo "Installing Python ver. ${PYTHON_VERSION}..." \
 	&& tar xzf Python-${PYTHON_VERSION}.tgz \
 	&& cd ./Python-${PYTHON_VERSION} \
 	&& ./configure --enable-optimizations \
-	&& make \
+	&& make -j$(nproc) \
 	&& checkinstall
 
 COPY ./requirements.txt ./
@@ -76,7 +77,7 @@ RUN echo "Installing Ceres Solver ver. ${CERES_SOLVER_VERSION}..." \
 	&& mkdir ./build \
 	&& cd ./build \
 	&& cmake ../ -DBUILD_TESTING=OFF -DBUILD_EXAMPLES=OFF \
-	&& make -j \
+	&& make -j$(nproc) \
 	&& make install
 
 RUN echo "Installing COLMAP ver. ${COLMAP_VERSION}..." \
@@ -87,6 +88,6 @@ RUN echo "Installing COLMAP ver. ${COLMAP_VERSION}..." \
 	&& mkdir ./build \
 	&& cd ./build \
 	&& cmake ../ \
-	&& make -j \
+	&& make -j$(nproc) \
 	&& make install \
 	&& colmap -h
