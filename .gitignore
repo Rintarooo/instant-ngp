@@ -22,3 +22,4 @@ imgui.ini
 /data/nerf/fox/rgba_slices/
 /data/cloud/wdas_cloud_quarter.nvdb
 /data/nerf/multiview_img/
+/colmap.db*

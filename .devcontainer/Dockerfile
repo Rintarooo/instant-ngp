@@ -91,3 +91,6 @@ RUN echo "Installing COLMAP ver. ${COLMAP_VERSION}..." \
 	&& make -j$(nproc) \
 	&& make install \
 	&& colmap -h
+
+# RUN echo "Installing additional pip packages..." \
+#     && pip3 --no-cache-dir install scikit-image
