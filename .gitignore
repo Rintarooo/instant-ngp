@@ -23,3 +23,6 @@ imgui.ini
 /data/cloud/wdas_cloud_quarter.nvdb
 /data/nerf/multiview_img/
 /colmap.db*
+/scripts/colmap.db*
+colmap_sparse/
+colmap_text/

@@ -1,5 +1,7 @@
 import numpy as np
 import math
+import json
+import argparse
 
 def parse_args():
     parser = argparse.ArgumentParser(description="read eular export to nerf format transforms.json")
@@ -45,10 +47,9 @@ def rotation_matrix(roll, pitch, yaw, tx, ty, tz):
 
 
 
-def get_transform_json(OUT_PATH, csv)
+def get_transform_json(OUT_PATH, csv, camera)
     print(f"outputting to {OUT_PATH}...")
     cameras = {}
-
     i = 0
     bottom = np.array([0.0, 0.0, 0.0, 1.0]).reshape([1, 4])
     out = {
@@ -78,8 +79,6 @@ def get_transform_json(OUT_PATH, csv)
             if line[0] == "#":
                 continue
             i = i + 1
-            if i < SKIP_EARLY*2:
-                continue
             if  i % 2 == 1:
                 elems=line.split(" ") # 1-4 is quat, 5-7 is trans, 9ff is filename (9, if filename contains no spaces)
                 #name = str(PurePosixPath(Path(IMAGE_FOLDER, elems[9])))
@@ -166,6 +165,20 @@ def get_transform_json(OUT_PATH, csv)
         
 if __name__ == "__main__":
     args = parse_args()
+    camera={
+        "camera_angle_x": 0.7481849417937728,
+        "camera_angle_y": 1.2193576119562444,
+        "fl_x": 2164.43,
+        "fl_y": 2164.43,
+        "k1": 0.0578421,
+        "k2": -0.0805099,
+        "p1": -0.000980296,
+        "p2": 0.00015575,
+        "cx": 2000.0#2652.0,
+        "cy": 3000.0#3976.0,
+        "w": 4000.0#5304.0,
+        "h": 6000.0#7952.0,
+        "aabb_scale": 4}
 
     # 例: オイラー角 (30, 45, 60) と並進移動量 (1, 2, 3) を4x4の回転行列に変換
     roll, pitch, yaw = 30, 45, 60
