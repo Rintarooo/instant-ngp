@@ -710,6 +710,7 @@ NerfDataset load_nerf(const std::vector<fs::path>& jsonpaths, float sharpen_amou
 	wait_all(futures);
 
 	tlog::success() << "Loaded " << images.size() << " images after " << tlog::durationToString(progress.duration());
+	tlog::success() << "Loaded image resolution, x: " << images[0].res.x << ", y: " << images[0].res.y;
 	tlog::info() << "  cam_aabb=" << cam_aabb;
 
 	if (result.has_rays) {

@@ -1,0 +1,25 @@
+version: "2"
+
+services:
+  instant-ngp-vulkan:
+    image: instantngp-vulkan:latest
+    build:
+      context: ../../..
+      dockerfile: ./.devcontainer/otherdev/vulkan/Dockerfile
+    stdin_open: true
+    tty: true
+    environment:
+      NVIDIA_DRIVER_CAPABILITIES: compute,utility,graphics
+      DISPLAY: $DISPLAY
+    volumes:
+      - ../../../:/volume
+      - /tmp/.X11-unix:/tmp/.X11-unix
+    working_dir: /volume
+    command: /bin/bash
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

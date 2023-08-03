@@ -1,9 +1,11 @@
 #!/bin/bash
 
 # ディレクトリと拡張子を指定
-DIR_IN="/volume/data/nerf/multiview_img/ta/neutral/tif/"
+DIR_IN="/volume/data/nerf/multiview_img/ta/5_91/tif/"
+# "/volume/data/nerf/multiview_img/ta/5_91/tif/"
 EXT_IN=".tif"
-DIR_OUT="/volume/data/nerf/multiview_img/ta/neutral/jpg/"
+DIR_OUT="/volume/data/nerf/multiview_img/ta/5_91/jpg/"
+# "/volume/data/nerf/multiview_img/ta/neutral/jpg/"
 # "/volume/data/nerf/multiview_img/ta/neutral/png/"
 # "/volume/data/nerf/multiview_img/ta/neutral/bin/"
 EXT_OUT=".jpg"

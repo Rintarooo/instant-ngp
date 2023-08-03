@@ -267,12 +267,29 @@ __Q:__ Is there a [Docker container](https://www.docker.com/)?
 __A:__ Yes. We bundle a [Visual Studio Code development container](https://code.visualstudio.com/docs/remote/containers), the `.devcontainer/Dockerfile` of which you can also use stand-alone. 
 
 If you want to run the container without using VSCode:
-```
+```bash
 docker-compose -f .devcontainer/docker-compose.yml build instant-ngp
 xhost local:root
 docker-compose -f .devcontainer/docker-compose.yml run instant-ngp /bin/bash
+# ./instant-ngp <path of transforms.json>
+./instant-ngp data/nerf/multiview_img/ta/colmap_pose/
+./instant-ngp data/nerf/multiview_img/ta/5_91/json/
 ```
 Then run the build commands above as normal.
+
+If you face want to remove orphans containers, run the following command
+```bash
+cd .devcontainer/
+docker-compose up -d --remove-orphans
+docker-compose ps
+docker-compose down
+```
+
+create vulkan added dev
+```bash
+docker-compose -f .devcontainer/otherdev/vulkan/docker-compose.yml build instant-ngp-vulkan
+docker-compose -f .devcontainer/otherdev/vulkan/docker-compose.yml run instant-ngp-vulkan /bin/bash
+```
 
 ##
 __Q:__ How can I edit and train the underlying hash encoding or neural network on a new task?
