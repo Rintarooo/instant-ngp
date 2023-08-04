@@ -271,6 +271,8 @@ If you want to run the container without using VSCode:
 docker-compose -f .devcontainer/docker-compose.yml build instant-ngp
 xhost local:root
 docker-compose -f .devcontainer/docker-compose.yml run instant-ngp /bin/bash
+
+# 実行
 # ./instant-ngp <path of transforms.json>
 ./instant-ngp data/nerf/multiview_img/ta/colmap_pose/
 ./instant-ngp data/nerf/multiview_img/ta/5_91/json/
