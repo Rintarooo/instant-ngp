@@ -270,11 +270,11 @@ If you want to run the container without using VSCode:
 ```bash
 docker-compose -f .devcontainer/docker-compose.yml build instant-ngp
 xhost local:root
-docker-compose -f .devcontainer/docker-compose.yml run instant-ngp /bin/bash
+docker-compose -f .devcontainer/docker-compose.yml run --rm instant-ngp /bin/bash
 
 # 実行
 # ./instant-ngp <path of transforms.json>
-./instant-ngp data/nerf/multiview_img/ta/colmap_pose/
+./instant-ngp data/nerf/multiview_img/ta/3_91_neutral/json/
 ./instant-ngp data/nerf/multiview_img/ta/5_91/json/
 ```
 Then run the build commands above as normal.
@@ -290,7 +290,8 @@ docker-compose down
 create vulkan added dev
 ```bash
 docker-compose -f .devcontainer/otherdev/vulkan/docker-compose.yml build instant-ngp-vulkan
-docker-compose -f .devcontainer/otherdev/vulkan/docker-compose.yml run instant-ngp-vulkan /bin/bash
+xhost local:root
+docker-compose -f .devcontainer/otherdev/vulkan/docker-compose.yml run --rm instant-ngp-vulkan /bin/bash
 ```
 
 ##

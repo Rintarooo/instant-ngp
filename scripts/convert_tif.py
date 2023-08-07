@@ -14,14 +14,20 @@ def parse_args():
 
 def convert_tif_to_png(tif_path, png_path, bits, ext):
     with Image.open(tif_path) as img:
+        print(f"tif_path: {tif_path}")
         print(f"width: {img.size[0]}, height: {img.size[1]} pixels")
-        # リサイズするサイズを指定 (幅, 高さ)
-        new_size = (args.resize_w, args.resize_h)
-        # 画像をリサイズ
-        img = img.resize(new_size, Image.LANCZOS)
-        print(f"resize to width: {img.size[0]}, height: {img.size[1]} pixels")
-        print(f"save bits: {bits}")
-        img.save(png_path, "PNG", bits=bits)
+        # if img.size[0]==4000 and img.size[1]==6000:
+        if img.size[0]==5304 and img.size[1]==7952:
+            print(f"png_path: {png_path}")
+            img.save(png_path, "PNG", bits=bits)
+
+        # # リサイズするサイズを指定 (幅, 高さ)
+        # new_size = (args.resize_w, args.resize_h)
+        # # 画像をリサイズ
+        # img = img.resize(new_size, Image.LANCZOS)
+        # print(f"resize to width: {img.size[0]}, height: {img.size[1]} pixels")
+        # print(f"save bits: {bits}")
+        # img.save(png_path, "PNG", bits=bits)
         
 
 if __name__ == "__main__":
