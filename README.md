@@ -294,6 +294,12 @@ xhost local:root
 docker-compose -f .devcontainer/otherdev/vulkan/docker-compose.yml run --rm instant-ngp-vulkan /bin/bash
 ```
 
+create pytorch added dev
+```bash
+docker-compose -f .devcontainer/otherdev/pytorch/docker-compose.yml build instant-ngp-pytorch
+xhost local:root
+docker-compose -f .devcontainer/otherdev/pytorch/docker-compose.yml run --rm instant-ngp-pytorch /bin/bash
+```
 ##
 __Q:__ How can I edit and train the underlying hash encoding or neural network on a new task?
 
